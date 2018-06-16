@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Save Your Referrals</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="banner_ad_unit_id">ca-app-pub-9740421347930137/7934111805</string>
+    <string name="addmanullay_ad_unit_id">ca-app-pub-9740421347930137/7866733004</string>
+    <string name="list_banner_ad_unit_id">ca-app-pub-9740421347930137/9343466206</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="title_activity_how_to_user">HowToUserActivity</string>
+
+</resources>

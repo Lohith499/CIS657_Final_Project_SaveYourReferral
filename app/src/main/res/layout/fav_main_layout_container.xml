@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5" >
+
+    <!-- <android.support.v4.widget.SwipeRefreshLayout -->
+    <!-- android:id="@+id/swipe_container" -->
+    <!-- android:layout_width="match_parent" -->
+    <!-- android:layout_height="match_parent" > -->
+
+    <com.smartapps.saveyourreferrals.FixedRecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:saveEnabled="false" />
+    <!-- </android.support.v4.widget.SwipeRefreshLayout> -->
+
+    <ImageView
+        android:id="@+id/fav_anim_image"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:src="@drawable/favorite21"
+        android:visibility="gone" />
+
+</RelativeLayout>

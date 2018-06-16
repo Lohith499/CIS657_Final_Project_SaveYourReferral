@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroll_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/padding_20dp" >
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="?android:attr/actionBarSize"
+            layout="@layout/title_bar_layout_how_to_user" />
+
+        <com.example.lohith.customviews.RobotoMediumTV
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="@dimen/padding_15dp"
+            android:duplicateParentState="true"
+            android:paddingLeft="@dimen/padding_10dp"
+            android:paddingRight="@dimen/padding_10dp"
+            android:text="STEP 1"
+            android:textColor="@color/black_text_color"
+            android:textSize="@dimen/textsize_16dp"
+            android:textStyle="bold" />
+
+        <com.example.lohith.customviews.RobotoRegularTV
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:duplicateParentState="true"
+            android:padding="@dimen/padding_10dp"
+            android:text="Select the app for which you want to save the referral"
+            android:textColor="@color/black_text_color"
+            android:textSize="@dimen/textsize_16dp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <com.example.lohith.customviews.RobotoMediumTV
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="@dimen/padding_15dp"
+            android:duplicateParentState="true"
+            android:paddingLeft="@dimen/padding_10dp"
+            android:paddingRight="@dimen/padding_10dp"
+            android:text="STEP 2"
+            android:textColor="@color/black_text_color"
+            android:textSize="@dimen/textsize_16dp"
+            android:textStyle="bold" />
+
+        <com.example.lohith.customviews.RobotoRegularTV
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:duplicateParentState="true"
+            android:padding="@dimen/padding_10dp"
+            android:text="Click Invite Friends or Share refferal code in the selected app"
+            android:textColor="@color/black_text_color"
+            android:textSize="@dimen/textsize_16dp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <com.example.lohith.customviews.RobotoMediumTV
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="@dimen/padding_15dp"
+            android:duplicateParentState="true"
+            android:paddingLeft="@dimen/padding_10dp"
+            android:paddingRight="@dimen/padding_10dp"
+            android:text="STEP 3"
+            android:textColor="@color/black_text_color"
+            android:textSize="@dimen/textsize_16dp"
+            android:textStyle="bold" />
+
+        <com.example.lohith.customviews.RobotoRegularTV
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:duplicateParentState="true"
+            android:padding="@dimen/padding_10dp"
+            android:text="You will be notified with the list of apps to share the code"
+            android:textColor="@color/black_text_color"
+            android:textSize="@dimen/textsize_16dp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <com.example.lohith.customviews.RobotoMediumTV
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="@dimen/padding_15dp"
+            android:duplicateParentState="true"
+            android:paddingLeft="@dimen/padding_10dp"
+            android:paddingRight="@dimen/padding_10dp"
+            android:text="STEP 4"
+            android:textColor="@color/black_text_color"
+            android:textSize="@dimen/textsize_16dp"
+            android:textStyle="bold" />
+
+        <com.example.lohith.customviews.RobotoRegularTV
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:duplicateParentState="true"
+            android:padding="@dimen/padding_10dp"
+            android:text="Please select Save your Referrals App"
+            android:textColor="@color/black_text_color"
+            android:textSize="@dimen/textsize_16dp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <com.example.lohith.customviews.RobotoMediumTV
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="@dimen/padding_15dp"
+            android:duplicateParentState="true"
+            android:paddingLeft="@dimen/padding_10dp"
+            android:paddingRight="@dimen/padding_10dp"
+            android:text="STEP 5"
+            android:textColor="@color/black_text_color"
+            android:textSize="@dimen/textsize_16dp"
+            android:textStyle="bold" />
+
+        <com.example.lohith.customviews.RobotoRegularTV
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:duplicateParentState="true"
+            android:padding="@dimen/padding_10dp"
+            android:text="Your Referral code is automatically saved to this application"
+            android:textColor="@color/black_text_color"
+            android:textSize="@dimen/textsize_16dp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <com.example.lohith.customviews.RobotoMediumTV
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="@dimen/padding_15dp"
+            android:duplicateParentState="true"
+            android:paddingLeft="@dimen/padding_10dp"
+            android:paddingRight="@dimen/padding_10dp"
+            android:text="STEP 6"
+            android:textColor="@color/black_text_color"
+            android:textSize="@dimen/textsize_16dp"
+            android:textStyle="bold" />
+
+        <com.example.lohith.customviews.RobotoRegularTV
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:duplicateParentState="true"
+            android:padding="@dimen/padding_10dp"
+            android:text="Now you can share all the referral codes using share action at any time with single click"
+            android:textColor="@color/black_text_color"
+            android:textSize="@dimen/textsize_16dp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <com.example.lohith.customviews.RobotoMediumTV
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="@dimen/padding_15dp"
+            android:duplicateParentState="true"
+            android:paddingLeft="@dimen/padding_10dp"
+            android:paddingRight="@dimen/padding_10dp"
+            android:text="NOTE:"
+            android:textColor="@color/black_text_color"
+            android:textSize="@dimen/textsize_16dp"
+            android:textStyle="bold" />
+
+        <com.example.lohith.customviews.RobotoRegularTV
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:duplicateParentState="true"
+            android:padding="@dimen/padding_10dp"
+            android:text="You can also add the referral codes manually using add manually action at the bottom"
+            android:textColor="@color/black_text_color"
+            android:textSize="@dimen/textsize_16dp" />
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+    </LinearLayout>
+
+</ScrollView>

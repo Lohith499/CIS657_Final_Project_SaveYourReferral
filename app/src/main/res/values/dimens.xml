@@ -1,0 +1,54 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="event_list_item_title">28dp</dimen>
+    <dimen name="navigation_drawer_layout_width">260dp</dimen>
+    <dimen name="events_bottom_radio_group_padding">10dp</dimen>
+    <dimen name="more_layout_padding">10dp</dimen>
+    <dimen name="more_seperater_height">1dp</dimen>
+    <dimen name="edit_profile_seperator_height">1.5px</dimen>
+    <dimen name="polls_radio_button_text_size">20dp</dimen>
+    <dimen name="events_banner_seperator_width">80dp</dimen>
+    <dimen name="events_banner_seperator_height">1dp</dimen>
+    <dimen name="polls_padding">10dp</dimen>
+    <dimen name="padding_4dp">4dp</dimen>
+    <dimen name="padding_5dp">5dp</dimen>
+    <dimen name="padding_6dp"> 5dp</dimen>
+    <dimen name="padding_10dp">10dp</dimen>
+    <dimen name="padding_15dp">15dp</dimen>
+    <dimen name="padding_20dp">20dp</dimen>
+    <dimen name="padding_30dp">30dp</dimen>
+    <dimen name="padding_40dp">40dp</dimen>
+    <dimen name="padding_50dp">50dp</dimen>
+    <dimen name="textsize_10dp">10dp</dimen>
+    <dimen name="textsize_11dp">11dp</dimen>
+    <dimen name="textsize_12dp">12dp</dimen>
+    <dimen name="textsize_13dp">13dp</dimen>
+    <dimen name="textsize_14dp">14dp</dimen>
+    <dimen name="textsize_15dp">15dp</dimen>
+    <dimen name="textsize_16dp">16dp</dimen>
+    <dimen name="textsize_17dp">17dp</dimen>
+    <dimen name="textsize_18dp">18dp</dimen>
+    <dimen name="textsize_19dp">19dp</dimen>
+    <dimen name="textsize_20dp">20dp</dimen>
+    <dimen name="textsize_21dp">21dp</dimen>
+    <dimen name="textsize_22dp">22dp</dimen>
+    <dimen name="textsize_23dp">23dp</dimen>
+    <dimen name="textsize_24dp">24dp</dimen>
+    <dimen name="textsize_25dp">25dp</dimen>
+    <dimen name="textsize_26dp">26dp</dimen>
+    <dimen name="textsize_27dp">27dp</dimen>
+    <dimen name="textsize_28dp">28dp</dimen>
+    <dimen name="textsize_29dp">29dp</dimen>
+    <dimen name="textsize_30dp">30dp</dimen>
+    <dimen name="login_edit_text_padding">40dp</dimen>
+    <dimen name="login_success_resources_top_padding">30dp</dimen>
+    <dimen name="login_success_resources_left_padding">30dp</dimen>
+    <dimen name="login_button_bottom_margin">20dp</dimen>
+    <dimen name="login_edit_text_side_margin">10dp</dimen>
+    <dimen name="progresswheelsize">70dp</dimen>
+    <dimen name="actionbar_title_size">20dp</dimen>
+
+</resources>

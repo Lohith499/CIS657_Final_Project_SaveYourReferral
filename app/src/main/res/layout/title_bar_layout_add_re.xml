@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="?android:attr/actionBarSize"
+    android:background="@color/menu_text_black" >
+
+    <ImageView
+        android:id="@+id/nav_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:padding="@dimen/padding_10dp"
+        android:src="@drawable/back_arrow" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <com.example.lohith.customviews.RobotoRegularTV
+            android:id="@+id/actionbar_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="Add Your Referral"
+            android:textColor="@color/actiobar_labelColor"
+            android:textSize="@dimen/textsize_16dp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/nav_icon_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:padding="@dimen/padding_10dp"
+        android:visibility="invisible" />
+
+</LinearLayout>

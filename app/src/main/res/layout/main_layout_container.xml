@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F5F5F5" >
+
+    <!-- <android.support.v4.widget.SwipeRefreshLayout -->
+    <!-- android:id="@+id/swipe_container" -->
+    <!-- android:layout_width="match_parent" -->
+    <!-- android:layout_height="match_parent" > -->
+
+    <LinearLayout
+        android:visibility="gone"
+        android:id="@+id/sort_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <com.example.lohith.customviews.RobotoRegularTV
+            android:id="@+id/sort_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/active_color"
+            android:gravity="center"
+            android:padding="@dimen/padding_10dp"
+            android:text="By Name"
+            android:textColor="@color/inactive_color" />
+
+        <com.example.lohith.customviews.RobotoRegularTV
+            android:id="@+id/sort_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/inactive_color"
+            android:gravity="center"
+            android:padding="@dimen/padding_10dp"
+            android:text="By Date"
+            android:textColor="@color/active_color" />
+    </LinearLayout>
+
+    <com.smartapps.saveyourreferrals.FixedRecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/add_manually"
+        android:layout_below="@+id/sort_layout"
+        android:saveEnabled="false" />
+    <!-- </android.support.v4.widget.SwipeRefreshLayout> -->
+
+    <com.example.lohith.customviews.RobotoMediumTV
+        android:id="@+id/add_manually"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/padding_10dp"
+        android:layout_marginTop="@dimen/padding_15dp"
+        android:background="@drawable/rounded_corner"
+        android:gravity="center"
+        android:padding="@dimen/padding_10dp"
+        android:text="Add Manually"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/textsize_18dp" />
+
+    <ImageView
+        android:id="@+id/fav_anim_image"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center"
+        android:src="@drawable/favorite21"
+        android:visibility="gone" />
+
+</RelativeLayout>

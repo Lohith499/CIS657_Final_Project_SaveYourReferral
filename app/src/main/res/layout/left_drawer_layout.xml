@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/menu_header" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/menu_seperator" />
+
+    <LinearLayout
+        android:id="@+id/app_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="@dimen/padding_10dp" >
+
+        <ImageView
+            android:layout_width="@dimen/padding_40dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:duplicateParentState="true"
+            android:src="@drawable/info3"
+            android:visibility="visible" />
+
+        <com.example.lohith.customviews.RobotoRegularTV
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:duplicateParentState="true"
+            android:text="How to Use"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize_16dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/menu_seperator" />
+
+    <LinearLayout
+        android:id="@+id/send_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="@dimen/padding_10dp" >
+
+        <ImageView
+            android:layout_width="@dimen/padding_40dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:duplicateParentState="true"
+            android:src="@drawable/email5"
+            android:visibility="visible" />
+
+        <com.example.lohith.customviews.RobotoRegularTV
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:duplicateParentState="true"
+            android:text="Send feedback"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textsize_16dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/menu_seperator" />
+
+</LinearLayout>
