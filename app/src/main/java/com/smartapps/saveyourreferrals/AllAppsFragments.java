@@ -157,6 +157,10 @@ public class AllAppsFragments extends Fragment {
 			} else {
 				rreferalAdapter.setList(((HomeActivity) getActivity())
 						.getAppInfoList());
+				if(recyclerView.getAdapter()==null)
+				{
+					recyclerView.setAdapter(rreferalAdapter);
+				}else
 				rreferalAdapter.notifyDataSetChanged();
 			}
 

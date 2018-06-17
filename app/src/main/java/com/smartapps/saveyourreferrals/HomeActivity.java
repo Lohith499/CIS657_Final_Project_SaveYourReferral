@@ -6,6 +6,7 @@ package com.smartapps.saveyourreferrals;
 import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.app.AppOpsManager;
+import android.app.IntentService;
 import android.app.usage.UsageStats;
 import android.app.usage.UsageStatsManager;
 import android.content.Context;
@@ -84,7 +85,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		pager.addOnPageChangeListener(adapter.onPageChangeListener);
 
 		try {
-			checktheIntents();
+			checktheIntents(getIntent());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -113,6 +114,18 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 
 	}
 
+
+	@Override
+	protected void onNewIntent(Intent intent) {
+		super.onNewIntent(intent);
+		try {
+			checktheIntents(intent);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 	public void intializeNavigationDrawer() {
 
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -138,11 +151,6 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 			e.printStackTrace();
 		}
 		String versionName = info.versionName;
-		// String osVersion = System.getProperty("os.version"); //
-		// OS
-		// version
-		// android.os.Build.VERSION.SDK // API Level
-		// String Device = android.os.Build.DEVICE; // Device
 		String Model = android.os.Build.MODEL; // Model
 		// String Product = android.os.Build.PRODUCT;
 		Email.putExtra(Intent.EXTRA_SUBJECT,
@@ -155,8 +163,8 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		startActivity(Intent.createChooser(Email, "Send Feedback:"));
 	}
 
-	private void checktheIntents() {
-		Intent intent = getIntent();
+	private void checktheIntents(Intent myintent) {
+		Intent intent = myintent;
 		String action = intent.getAction();
 		String type = intent.getType();
 		if (Intent.ACTION_SEND.equals(action) && type != null) {

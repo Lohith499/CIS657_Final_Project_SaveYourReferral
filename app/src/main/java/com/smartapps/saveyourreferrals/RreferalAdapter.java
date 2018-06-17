@@ -49,7 +49,6 @@ public class RreferalAdapter extends
 	private Context mContext;
 	private Boolean isOnlyFavourites;
 	private List<AppInfo> mFavAppInfoList = new ArrayList<AppInfo>();
-	private int ADD_INTERVAL = 4;
 
 	public RreferalAdapter(List<StoryBean> response, boolean isLatestStories,
                            Context mContext, Boolean isOnlyFavourites) {
@@ -73,20 +72,21 @@ public class RreferalAdapter extends
 	@Override
 	public int getItemCount() {
 		// TODO Auto-generated method stub
-		return mAppInfoList.size() + mAppInfoList.size() / ADD_INTERVAL;
+		return mAppInfoList.size() ;
 	}
 
 	@Override
 	public void onBindViewHolder(final RecyclerView.ViewHolder viewHolder,
 			final int mPosition) {
 
-		final int position = mPosition - ((mPosition + 1) / (ADD_INTERVAL + 1));
+		final int position = mPosition ;
 		if (getItemViewType(mPosition) != 0) {
 			final AddViewHolder vhadd = (AddViewHolder) viewHolder;
 
 			AdRequest adRequest = new AdRequest.Builder()
 			// .addTestDevice(
 			// "32AD717F3EDA76A9F0C839FF9588E39C")
+
 					.build();
 			vhadd.mAdView.loadAd(adRequest);
 			return;
@@ -272,11 +272,7 @@ public class RreferalAdapter extends
 	@Override
 	public int getItemViewType(int position) {
 		// TODO Auto-generated method stub
-		if ((position + 1) % (ADD_INTERVAL + 1) == 0) {
-			return 0;
-		} else {
-			return 0;
-		}
+		return  0;
 	}
 
 	public static Intent shareExludingApp(Context ctx,
