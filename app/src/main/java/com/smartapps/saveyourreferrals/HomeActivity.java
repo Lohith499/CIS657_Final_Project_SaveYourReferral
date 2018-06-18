@@ -422,7 +422,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		appRef.put("AppName",appname);
 		appRef.put("Packagename",pakckagename);
 		appRef.put("RefrralText",referraltext);
-		appRef.put("TimeStamp",""+System.currentTimeMillis());
+		appRef.put("TimeStamp",""+time);
 
 		//**********************************************
 
