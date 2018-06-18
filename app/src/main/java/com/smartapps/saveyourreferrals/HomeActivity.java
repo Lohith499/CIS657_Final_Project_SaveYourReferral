@@ -3,6 +3,7 @@ package com.smartapps.saveyourreferrals;
 /**
  * @author Lohith and Brian
  */
+import android.Manifest;
 import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.app.AppOpsManager;
@@ -25,11 +26,15 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
@@ -39,12 +44,22 @@ import android.view.View.OnClickListener;
 import android.widget.Toast;
 
 import com.example.lohith.customviews.SlidingTabLayout;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.smartapps.saveyourreferrals.dao.AppInfo;
 import com.smartapps.saveyourreferrals.dao.AppInfoDao.Properties;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+//Adding Firebase
+
 
 import saveyourreferrals.lohith.com.saveyourreferrals.R;
 
@@ -58,6 +73,9 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 	public DrawerLayout mDrawerLayout;
 	private ActionBarDrawerToggle mDrawerToggle;
 	private View navmenuIcon;
+	private FirebaseFirestore mFirestore;
+	private static final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 1234;
+	private Boolean phone_permission_granted;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +91,22 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 
 			}
 		});
+		phone_permission_granted = false;
 
+
+		if (ContextCompat.checkSelfPermission(HomeActivity.this,
+				Manifest.permission.CALL_PHONE)
+				!= PackageManager.PERMISSION_GRANTED) {
+
+			ActivityCompat.requestPermissions(HomeActivity.this,
+					new String[]{Manifest.permission.CALL_PHONE},
+					MY_PERMISSIONS_REQUEST_CALL_PHONE);
+		} else {
+			phone_permission_granted = true;
+		}
+
+
+		mFirestore = FirebaseFirestore.getInstance();
 		adapter = new TabsPagerAdapter(getSupportFragmentManager());
 		ViewPager pager = (ViewPager) findViewById(R.id.pager);
 		pager.setAdapter(adapter);
@@ -367,6 +400,9 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		appInfo.setPackage_name_name(pakckagename + "");
 		appInfo.setBase64_applogo(base64image + "");
 		appInfo.setReferral_text(referraltext + "");
+
+
+
 		temp = MyApplication.getInstance().getDaoSession().getAppInfoDao()
 				.queryBuilder()
 				.where(Properties.Package_name_name.eq(pakckagename + ""))
@@ -378,7 +414,40 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		}
 		appInfo.setTime(time + "");
 
+
+
 		MyApplication.getInstance().getDaoSession().insertOrReplace(appInfo);
+
+		//Adding Firebase
+		Map<String,String> appRef = new HashMap<>();
+		appRef.put("AppName",appname);
+		appRef.put("Packagename",pakckagename);
+		appRef.put("RefrralText",referraltext);
+		appRef.put("TimeStamp",""+System.currentTimeMillis());
+
+		//**********************************************
+
+		if (phone_permission_granted) {
+			appRef.put("DeviceIMEI",getDeviceIMEI());
+		} else {
+			appRef.put("DeviceIMEI","Not able to Fetch ID");
+		}
+		//**************************************
+
+
+		mFirestore.collection("Referrals").add(appRef).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+			@Override
+			public void onSuccess(DocumentReference documentReference) {
+					Toast.makeText(HomeActivity.this, "Referral Hasbeen added to FireStore", Toast.LENGTH_SHORT).show();
+				}
+			}).addOnFailureListener(new OnFailureListener() {
+				@Override
+				public void onFailure(@NonNull Exception e) {
+					String error = e.getMessage();
+					Toast.makeText(HomeActivity.this, "Error : "+error,Toast.LENGTH_SHORT).show();
+			}
+		});
+
 
 		refreshTheData();
 
@@ -397,6 +466,55 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		// pager.setOnPageChangeListener(adapter.onPageChangeListener);
 
 	}
+
+
+	public String getDeviceIMEI() {
+		String deviceUniqueIdentifier = null;
+		TelephonyManager tm = (TelephonyManager) this.getSystemService(Context.TELEPHONY_SERVICE);
+	try {
+		if (null != tm) {
+			deviceUniqueIdentifier = tm.getDeviceId();
+		}
+		if (null == deviceUniqueIdentifier || 0 == deviceUniqueIdentifier.length()) {
+			deviceUniqueIdentifier = Settings.Secure.getString(this.getContentResolver(), Settings.Secure.ANDROID_ID);
+		}
+		return deviceUniqueIdentifier;
+	}
+	catch (SecurityException e) {
+		 e.printStackTrace();
+			}
+			return "Not able to get deviceID";
+	}
+
+
+
+
+	@Override
+	public void onRequestPermissionsResult(int requestCode,
+										   String permissions[], int[] grantResults) {
+		switch (requestCode) {
+			case MY_PERMISSIONS_REQUEST_CALL_PHONE: {
+				// If request is cancelled, the result arrays are empty.
+				if (grantResults.length > 0
+						&& grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+					// permission was granted, yay!
+					phone_permission_granted = true;
+
+
+				} else {
+					phone_permission_granted=false;
+					// permission denied, boo! Disable the
+					// functionality that depends on this permission.
+				}
+				return;
+			}
+		}
+	}
+
+
+
+
 
 	public String encodeIcon(Drawable icon) {
 		try {

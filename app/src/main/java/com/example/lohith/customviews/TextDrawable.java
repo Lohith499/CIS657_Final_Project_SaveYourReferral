@@ -14,8 +14,7 @@ import android.graphics.drawable.shapes.RectShape;
 import android.graphics.drawable.shapes.RoundRectShape;
 
 /**
- * @author amulya
- * @datetime 14 Oct 2014, 3:53 PM
+ * @author Lohith and Brian
  */
 public class TextDrawable extends ShapeDrawable {
 

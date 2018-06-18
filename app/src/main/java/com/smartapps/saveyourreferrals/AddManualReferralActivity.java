@@ -69,9 +69,9 @@ public class AddManualReferralActivity extends Activity {
 		if (!validate()) {
 			return;
 		}
-		String email = _appName.getText().toString();
-		String password = _referralDesc.getText().toString();
-		saveDetails(email, System.currentTimeMillis() + "", "", password, "0",
+		String tappname = _appName.getText().toString();
+		String treferralDesc = _referralDesc.getText().toString();
+		saveDetails(tappname, System.currentTimeMillis() + "", "", treferralDesc, "0",
 				System.currentTimeMillis() + "");
 	}
 
