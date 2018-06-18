@@ -25,8 +25,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lohith.customviews.TextDrawable;
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdView;
 import com.smartapps.saveyourreferrals.dao.AppInfo;
 import com.smartapps.saveyourreferrals.dao.AppInfoDao.Properties;
 
@@ -83,12 +81,7 @@ public class RreferalAdapter extends
 		if (getItemViewType(mPosition) != 0) {
 			final AddViewHolder vhadd = (AddViewHolder) viewHolder;
 
-			AdRequest adRequest = new AdRequest.Builder()
-			// .addTestDevice(
-			// "32AD717F3EDA76A9F0C839FF9588E39C")
 
-					.build();
-			vhadd.mAdView.loadAd(adRequest);
 			return;
 		}
 		final AppInfo appInfo = mAppInfoList.get(position);
@@ -120,7 +113,7 @@ public class RreferalAdapter extends
 			@Override
 			public void onClick(View v) {
 				try {
-					String shareBody = "" + appInfo.getReferral_text();
+					String shareBody = "App Name:" + appInfo.getApp_name()+";Referral Description:"+appInfo.getReferral_text();
 					Intent intent = shareExludingApp(mContext,
 							mContext.getPackageName(), "" + shareBody);
 					mContext.startActivity(intent);
@@ -213,11 +206,11 @@ public class RreferalAdapter extends
 	}
 
 	public class AddViewHolder extends RecyclerView.ViewHolder {
-		AdView mAdView;
+
 
 		public AddViewHolder(View view) {
 			super(view);
-			mAdView = (AdView) view.findViewById(R.id.adView);
+
 		}
 	}
 
