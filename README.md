@@ -32,7 +32,9 @@ The GreenDAO Android ORM for SQLite is the defining technology behind the applic
 
 Though it is not necessary for our app we still added the firebase integration to it. The data is being stored in both the RealTime Database and Cloud FireStore to see how data is being stored in each of these
 
+### Facebook Integration
 
+User can share the referral App Name and its description using Facebook Share button
 
 ## Privacy
 
