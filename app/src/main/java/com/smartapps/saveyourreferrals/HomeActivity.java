@@ -27,6 +27,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
+import android.support.multidex.MultiDex;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
@@ -87,6 +88,14 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 	private static final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 1234;
 	private Boolean phone_permission_granted;
 	DatabaseReference topRef;
+
+	@Override
+	protected void attachBaseContext(Context context) {
+		super.attachBaseContext(context);
+		MultiDex.install(this);
+	}
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

@@ -67,16 +67,6 @@
         android:textColor="@android:color/white"
         android:textSize="@dimen/textsize_18dp" />
 
-    <com.google.android.gms.ads.AdView
-        android:id="@+id/adView"
-        android:visibility="gone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center"
-        ads:adSize="BANNER"
-        ads:adUnitId="@string/addmanullay_ad_unit_id" >
-    </com.google.android.gms.ads.AdView>
+
 
 </LinearLayout>

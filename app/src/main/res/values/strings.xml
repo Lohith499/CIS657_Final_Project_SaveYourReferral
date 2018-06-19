@@ -8,5 +8,6 @@
     <string name="list_banner_ad_unit_id">ca-app-pub-9740421347930137/9343466206</string>
     <string name="title_activity_splash">SplashActivity</string>
     <string name="title_activity_how_to_user">HowToUserActivity</string>
+    <string name="facebook_app_id">1737003549720774</string>
 
 </resources>

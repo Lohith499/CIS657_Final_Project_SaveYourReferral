@@ -11,6 +11,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
@@ -25,6 +26,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.lohith.customviews.TextDrawable;
+import com.facebook.share.model.ShareLinkContent;
+
+import com.facebook.share.widget.ShareButton;
 import com.smartapps.saveyourreferrals.dao.AppInfo;
 import com.smartapps.saveyourreferrals.dao.AppInfoDao.Properties;
 
@@ -133,6 +137,19 @@ public class RreferalAdapter extends
 			}
 		});
 
+		// Sharing the content to facebook
+		ShareLinkContent content = new ShareLinkContent.Builder()
+				// Setting the title that will be shared
+				.setContentTitle("Planning a trip to Dubai?")
+				// Setting the description that will be shared
+				.setQuote("App Name:" + appInfo.getApp_name()+";Referral Description:"+appInfo.getReferral_text())
+				// Setting the URL that will be shared
+				//.setContentUrl(Uri.parse("https://justa128.github.io/dubai-tour-guide/landingpage/"))
+				// Setting the image that will be shared
+				.setContentUrl(Uri.parse("https://lh3.googleusercontent.com/ZN9n_7gXTF5nU5OmXpm-GMi7DrqKAA_y1IsILzndgslSqiJvK8Qx9npaPqH8bdRn8CPRa7pURbRyGtDeSnriiO10ZgJTSSDeUMSU9ekJ3rn76XskmbClUv1Xu2R8BNk32CUPGW1wTMz0cBBTHgwtlUPI3pwOgpGh9OAFFo5RuOz5bmgtKH8V8dN8XPkEoMo4rkjtQaT3ROlyhPUpHIDctRQpGKnVF1seQteR8MKfBWUlImH2r8RUu8NH0p-pCf72EQLPzYaj5p39qtYz6PZWdRYkLUiAvEWu8kAbcMzvu7PrbbkDCJkG83k0WRzA5EKEv7LSdjWt8IK7ohtojXX49gwX87HMXEyJaPtL_STSzbEHWSuVw9gxs66V8QBlMatjhCxZzwP6PFnY5GcqHvLBCxJ1-LUdj2585bzDsyH0mGXq7RywUBEIdkvhnMR8XE4Dv5tsLoeVOxh0pgEkrRTk4yyOF0VeaFFsLv3v0ZyTSLVBsTELEPEeyY8hJyGOtT-3HoJ7jsJwjbSfX3BRd0yRgPmhe-OtreXvcJp047IH_lX3oX4C6byusj4TDJQfSUa40_m1pibYjPqPwqqSO0XFCT57LSrk2QiWNh9TzaYt=s118-no"))
+				.build();
+		vh.shareButton.setShareContent(content);
+
 		vh.favIcon.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -178,6 +195,9 @@ public class RreferalAdapter extends
 			Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString,
 					0, decodedString.length);
 			vh.appLogo.setImageBitmap(decodedByte);
+
+
+
 			// decodedByte.recycle();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -222,6 +242,7 @@ public class RreferalAdapter extends
 		public ImageView shareIV;
 		public ImageView favIcon;
 		public ImageView deleteIcon;
+		public ShareButton shareButton;
 
 		public ViewHolder(View view) {
 			super(view);
@@ -232,7 +253,7 @@ public class RreferalAdapter extends
 			favIcon = (ImageView) view.findViewById(R.id.favourite);
 			deleteIcon = (ImageView) view.findViewById(R.id.delete);
 			shareIV = (ImageView) view.findViewById(R.id.share);
-
+			shareButton = (ShareButton) view.findViewById(R.id.fb_share_button);
 		}
 
 	}
