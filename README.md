@@ -19,7 +19,7 @@ App should be able to have Usage and Phone permissions to run successfully
 
 Download the Apk file at the below link and install in your mobile
 
-http://www.mediafire.com/file/cdwaqwiv8a3nr6w/SaveyourReferralv6.apk
+http://www.mediafire.com/file/gc1uf1ivf9xei4i/SaveyourReferral_v6_1.apk
 
 ## DataBase Storage
 
@@ -101,11 +101,11 @@ https://developer.android.com/training/sharing/receive
 http://greenrobot.org/greendao/documentation/updating-to-greendao-3-and-annotations/
 http://greenrobot.org/greendao/documentation/ 
 How to get started
-Introduction – project setup
-Modelling entities – schema and annotations
-Sessions – identity scope and session cache
-Queries – using the query builder
-Joins – multi-table joins and self-joins
+Introduction â€“ project setup
+Modelling entities â€“ schema and annotations
+Sessions â€“ identity scope and session cache
+Queries â€“ using the query builder
+Joins â€“ multi-table joins and self-joins
 
 simple Tutorial at GREENDAO- 
 https://www.youtube.com/watch?v=zDdu1MlXjZw
