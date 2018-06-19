@@ -48,13 +48,6 @@ We had positive feedback regarding additional ideas that were not implemented in
 
 
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
 
 ## Authors
 
@@ -115,6 +108,7 @@ https://www.youtube.com/watch?v=zDdu1MlXjZw
 
 
 ---Facebook Share button Integration---
+
 https://developers.facebook.com/docs/sharing/android
 
 https://android.jlelse.eu/https-medium-com-justynagolawska-adding-custom-designed-facebook-share-button-to-your-app-a2dcee880f6a
