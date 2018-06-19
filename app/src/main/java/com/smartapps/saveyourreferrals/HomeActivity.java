@@ -46,6 +46,11 @@ import android.widget.Toast;
 import com.example.lohith.customviews.SlidingTabLayout;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.smartapps.saveyourreferrals.dao.AppInfo;
@@ -53,6 +58,7 @@ import com.smartapps.saveyourreferrals.dao.AppInfoDao.Properties;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -67,15 +73,20 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 	private List<AppInfo> mAppInfoList;
 	private List<AppInfo> mFavAppInfoList = new ArrayList<AppInfo>();
 	private List<AppInfo> temp;
+	public static List<AppInfo> allHistory = new ArrayList<AppInfo>();;
 	private TabsPagerAdapter adapter;
 	private boolean orderbyname = true;;
 	public DrawerLayout mDrawerLayout;
 	private ActionBarDrawerToggle mDrawerToggle;
 	private View navmenuIcon;
+
+
 	private FirebaseFirestore mFirestore;
+
+
 	private static final int MY_PERMISSIONS_REQUEST_CALL_PHONE = 1234;
 	private Boolean phone_permission_granted;
-
+	DatabaseReference topRef;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -106,6 +117,9 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 
 
 		mFirestore = FirebaseFirestore.getInstance();
+
+
+
 		adapter = new TabsPagerAdapter(getSupportFragmentManager());
 		ViewPager pager = (ViewPager) findViewById(R.id.pager);
 		pager.setAdapter(adapter);
@@ -115,6 +129,9 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 				R.color.content_text_color));
 		mSlidingTabLayout.setViewPager(pager);
 		pager.addOnPageChangeListener(adapter.onPageChangeListener);
+
+		topRef = FirebaseDatabase.getInstance().getReference("history");
+
 
 		try {
 			checktheIntents(getIntent());
@@ -390,6 +407,53 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		}
 	}
 
+
+	@Override
+	public void onResume(){
+		super.onResume();
+		allHistory.clear();
+		topRef = FirebaseDatabase.getInstance().getReference("history");
+		topRef.addChildEventListener (chEvListener);
+//topRef.addValueEventListener(valEvListener);
+	}
+	@Override
+	public void onPause(){
+		super.onPause();
+		topRef.removeEventListener(chEvListener);
+	}
+
+	private ChildEventListener chEvListener = new ChildEventListener() {
+		@Override
+		public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+			AppInfo entry = (AppInfo)
+					dataSnapshot.getValue(AppInfo.class);
+			entry.setTest1(dataSnapshot.getKey());
+			allHistory.add(entry);
+		}
+		@Override
+		public void onChildChanged(DataSnapshot dataSnapshot, String s) {
+		}
+		@Override
+		public void onChildRemoved(DataSnapshot dataSnapshot) {
+			AppInfo entry = (AppInfo)
+					dataSnapshot.getValue(AppInfo.class);
+			List<AppInfo> newHistory = new ArrayList<AppInfo>();
+			for (AppInfo t : allHistory) {
+				if (!t.getTest1().equals(dataSnapshot.getKey())) {
+					newHistory.add(t);
+				}
+			}
+			allHistory = newHistory;
+		}
+		@Override
+
+		public void onChildMoved(DataSnapshot dataSnapshot, String s) {
+		}
+		@Override
+		public void onCancelled(DatabaseError databaseError) {
+		}
+	};
+
 	public void saveDetails(String appname, String pakckagename,
                             String base64image, String referraltext, String isfavouite,
                             String time) {
@@ -411,7 +475,9 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		} else {
 			appInfo.setIs_favourite(isfavouite + "");
 		}
-		appInfo.setTime(time + "");
+
+		String stime = ""+Calendar.getInstance().getTime().toString();
+		appInfo.setTime(Calendar.getInstance().getTime().toString() + "");
 
 
 
@@ -422,7 +488,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		appRef.put("AppName",appname);
 		appRef.put("Packagename",pakckagename);
 		appRef.put("RefrralText",referraltext);
-		appRef.put("TimeStamp",""+time);
+		appRef.put("TimeStamp",""+stime);
 
 		//**********************************************
 
@@ -433,7 +499,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener {
 		}
 		//**************************************
 
-
+		topRef.push().setValue(appRef);
 		mFirestore.collection("Referrals").add(appRef).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
 			@Override
 			public void onSuccess(DocumentReference documentReference) {
