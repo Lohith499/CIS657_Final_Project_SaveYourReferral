@@ -114,6 +114,12 @@ https://www.youtube.com/watch?v=zDdu1MlXjZw
 
 
 
+---Facebook Share button Integration---
+https://developers.facebook.com/docs/sharing/android
+
+https://android.jlelse.eu/https-medium-com-justynagolawska-adding-custom-designed-facebook-share-button-to-your-app-a2dcee880f6a
+
+
 --Android Tab tutorial---
 
 https://www.youtube.com/watch?v=bNpWGI_hGGg
